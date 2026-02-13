@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etch a Sketch</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id = "container"></div>
+    <script>
+        gridDimension = 16;
+
+        let container = document.querySelector("#container");
+
+        /* container css properties */
+        container.style.display = "flex";
+        container.style.flexDirection = "column"
+        container.style.alignItems = "center"
+        container.style.height = "90%"
+        container.style.width = "90%"
+        container.style.border = "2px solid red"
+
+        /* Nested loop to make INNER div2, add it to
+        OUTER div1, then add outer div with rows of 
+        inner div2 to outermost DIV CONTAINER */
+        for (let i = 0; i < gridDimension; i ++){
+            let div1 = document.createElement("div");
+            for (let j = 0; j < gridDimension; j++) {
+                let div2 = document.createElement("div")
+
+                /*div2 css properties*/
+                div2.style.min
+                div2.style.backgroundColor = "pink";
+                div2.style.border = "2px solid black"
+                div2.style.flexGrow = "1";
+                
+                div1.appendChild(div2);
+            }
+            /*div1 css properties*/
+            div1.style.height = "100%"
+            div1.style.width = "100%"
+            div1.style.display = "flex";
+            div1.style.justifyContent = "center";
+
+            container.appendChild(div1);
+        }
+
+    </script>
+</body>
+</html>
