@@ -39,31 +39,35 @@
     <div id = "container"></div>
 
     <script>
-        let makeNewButton = document.querySelector("#myButton")
-        let containerInitial = document.querySelector("#container");
-        let body = document.querySelector("body")
 
-        newBox(gridDimension=16)
+        let makeNewButton = document.querySelector("#myButton")
+        let body = document.querySelector("body")
+        newBox(16)
 
         makeNewButton.addEventListener("click", (e)=>{
-            gridDimension=prompt("Enter pixel dimension(Can't be more than 100):")
-            newBox(gridDimension=16)
+            let gridDimension = prompt("Enter pixel dimension(Can't be more than 100):")
+            console.log(gridDimension)
+            if (gridDimension == "") {
+                gridDimension = 16;
+            }
+            newBox(gridDimension)
             })
-            
-        function newBox(gridDimension) {  
+        
+            function newBox(gridDimension=16) {  
+            /* outermost container css properties*/
+            let containerInitial = document.querySelector("#container");
             containerInitial.remove()
 
-            let containerNew = document.createElement("div")
+            let container = document.createElement("div")
+            container.id = "container"
 
-            /* putermost container css properties*/
-            containerNew.id = "containerNew"
-            containerNew.style.display = "flex"; 
-            containerNew.style.flexDirection = "column" 
-            containerNew.style.alignItems = "center" 
-            containerNew.style.height = "75%" 
-            containerNew.style.width = "63%" 
-            containerNew.style.border = "0.1px solid red" 
-            containerNew.style.marginBottom = "25px";
+            container.style.display = "flex"; 
+            container.style.flexDirection = "column" 
+            container.style.alignItems = "center" 
+            container.style.height = "75%" 
+            container.style.width = "63%" 
+            container.style.border = "0.1px solid red" 
+            container.style.marginBottom = "25px";
 
                 for (let i = 0; i < gridDimension; i ++){
                     let div1 = document.createElement("div");
@@ -84,17 +88,18 @@
                     div1.style.display = "flex";
                     div1.style.justifyContent = "center";
 
-                    containerNew.appendChild(div1);
-                    body.appendChild(containerNew)
+                    container.appendChild(div1);
+                    body.appendChild(container)
                 }
 
-                let pixels = document.querySelectorAll("#containerNew div")
+                let pixels = document.querySelectorAll("#container div")
                 pixels.forEach(pixel => {
                     pixel.addEventListener("mouseover", e => {
                         pixel.style.backgroundColor = "green"
                     })
                 })
             }
+        
 
 
 
